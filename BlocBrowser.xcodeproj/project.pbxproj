@@ -12,6 +12,7 @@
 		F95C487B1A2CE6C8004760B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F95C487A1A2CE6C8004760B6 /* Images.xcassets */; };
 		F95C487E1A2CE6C8004760B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C487C1A2CE6C8004760B6 /* LaunchScreen.xib */; };
 		F95C488A1A2CE6C8004760B6 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C48891A2CE6C8004760B6 /* BlocBrowserTests.m */; };
+		F95C48951A2CE786004760B6 /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C48941A2CE786004760B6 /* BLCWebBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		F95C48831A2CE6C8004760B6 /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95C48881A2CE6C8004760B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F95C48891A2CE6C8004760B6 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
+		F95C48931A2CE786004760B6 /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLCWebBrowserViewController.h; path = ../BLCWebBrowserViewController.h; sourceTree = "<group>"; };
+		F95C48941A2CE786004760B6 /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLCWebBrowserViewController.m; path = ../BLCWebBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 		F95C48721A2CE6C8004760B6 /* BlocBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				F95C48931A2CE786004760B6 /* BLCWebBrowserViewController.h */,
+				F95C48941A2CE786004760B6 /* BLCWebBrowserViewController.m */,
 				F95C48771A2CE6C8004760B6 /* AppDelegate.h */,
 				F95C48781A2CE6C8004760B6 /* AppDelegate.m */,
 				F95C487A1A2CE6C8004760B6 /* Images.xcassets */,
@@ -212,6 +217,7 @@
 			files = (
 				F95C48791A2CE6C8004760B6 /* AppDelegate.m in Sources */,
 				F95C48761A2CE6C8004760B6 /* main.m in Sources */,
+				F95C48951A2CE786004760B6 /* BLCWebBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +402,7 @@
 				F95C488F1A2CE6C8004760B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F95C48901A2CE6C8004760B6 /* Build configuration list for PBXNativeTarget "BlocBrowserTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +411,7 @@
 				F95C48921A2CE6C8004760B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
