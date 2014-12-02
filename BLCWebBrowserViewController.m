@@ -34,6 +34,12 @@
 
 
 - (void)loadView {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Welcome!", @"Welcome title")
+                                                    message:NSLocalizedString(@"Get excited to use the best web browser ever!", @"Welcome comment")
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"OK, I'm excited!", @"Welcome button title") otherButtonTitles:nil];
+    [alert show];
+    
     
     UIView *mainView = [UIView new];
     self.webview = [[UIWebView alloc] init];
@@ -67,6 +73,7 @@
     [self.backButton setTitle:NSLocalizedString(@"Back", @"Back comnmand") forState:UIControlStateNormal];
     [self.backButton addTarget:self.webview action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     
+    // addButtonTargets code didn't work here
     [self.forwardButton setTitle:NSLocalizedString(@"Forward", @"Forward comnmand") forState:UIControlStateNormal];
     [self.forwardButton addTarget:self.webview action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
     
@@ -76,6 +83,8 @@
     [self.reloadButton setTitle:NSLocalizedString(@"Refresh", @"Reload comnmand") forState:UIControlStateNormal];
     [self.reloadButton addTarget:self.webview action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
 
+   
+   // [self addButtonTargets];
     
     for (UIView *viewToAdd in @[self.webview, self.textField, self.backButton, self.forwardButton, self.stopButton, self.reloadButton]) {
         [mainView addSubview:viewToAdd];
@@ -133,13 +142,18 @@
    
     
     
-    // Check to see if there are any spaces in the URL
-    NSRange searchRange = [URLString rangeOfString:@" "];
+    // Check to see if there are any spaces in the URL;  Check to see if the URL is missing "."'s - Do Google Search
+    NSRange findSpaces = [URLString rangeOfString:@" "];
+    NSRange findPeriods = [URLString rangeOfString:@"."];
     
-    if (searchRange.location !=NSNotFound) {
+    if (findSpaces.location !=NSNotFound) {
         NSString *newSearchString = [URLString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
         URL = [NSURL URLWithString: [NSString stringWithFormat:@"http://www.google.com/search?q=%@", newSearchString]];
         
+    }
+    
+   if (findPeriods.location ==NSNotFound) {
+        URL = [NSURL URLWithString: [NSString stringWithFormat:@"http://www.google.com/search?q=%@", URLString]];
     }
     
     
@@ -165,12 +179,12 @@
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    self.frameCount++;
+   self.frameCount++;
    [self updateButtonsAndTitle];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
-     self.frameCount--;
+    self.frameCount--;
    [self updateButtonsAndTitle];
 }
 
@@ -191,7 +205,43 @@
     self.frameCount--;
 }
 
+- (void)resetWebView {
+    
+    [self.webview removeFromSuperview];
+    
+    UIWebView *newWebView = [[UIWebView alloc]init];
+    newWebView.delegate = self;
+    [self.view addSubview:newWebView];
+    
+    self.webview = newWebView;
+    
+    [self addButtonTargets];
+    
+    self.textField.text = nil;
+    
+    [self updateButtonsAndTitle];
+    
+    
+    
+}
+
 #pragma mark - Miscellaneous
+
+
+- (void) addButtonTargets {
+    for (UIButton *button in @[self.backButton, self.forwardButton, self.stopButton, self.reloadButton]) {
+        [button removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [self.backButton addTarget:self.webview action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.forwardButton addTarget:self.webview action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+    [self.stopButton addTarget:self.webview action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+    [self.reloadButton addTarget:self.webview action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+
+
 
 - (void) updateButtonsAndTitle {
     NSString *webpageTitle = [self.webview stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -212,8 +262,9 @@ if (self.frameCount > 0) {
 self.backButton.enabled = [self.webview canGoBack];
 self.forwardButton.enabled = [self.webview canGoForward];
 self.stopButton.enabled = self.frameCount > 0;
-self.reloadButton.enabled = self.frameCount == 0;
-}/*
+self.reloadButton.enabled = self.webview.request.URL && self.frameCount == 0;
+
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -222,5 +273,5 @@ self.reloadButton.enabled = self.frameCount == 0;
     // Pass the selected object to the new view controller.
 }
 */
-
+}
 @end
