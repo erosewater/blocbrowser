@@ -13,6 +13,7 @@
 		F95C487E1A2CE6C8004760B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C487C1A2CE6C8004760B6 /* LaunchScreen.xib */; };
 		F95C488A1A2CE6C8004760B6 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C48891A2CE6C8004760B6 /* BlocBrowserTests.m */; };
 		F95C48951A2CE786004760B6 /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C48941A2CE786004760B6 /* BLCWebBrowserViewController.m */; };
+		F9B9ECE81A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B9ECE71A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		F95C48891A2CE6C8004760B6 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
 		F95C48931A2CE786004760B6 /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLCWebBrowserViewController.h; path = ../BLCWebBrowserViewController.h; sourceTree = "<group>"; };
 		F95C48941A2CE786004760B6 /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLCWebBrowserViewController.m; path = ../BLCWebBrowserViewController.m; sourceTree = "<group>"; };
+		F9B9ECE61A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCAwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		F9B9ECE71A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCAwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 			children = (
 				F95C48931A2CE786004760B6 /* BLCWebBrowserViewController.h */,
 				F95C48941A2CE786004760B6 /* BLCWebBrowserViewController.m */,
+				F9B9ECE61A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.h */,
+				F9B9ECE71A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.m */,
 				F95C48771A2CE6C8004760B6 /* AppDelegate.h */,
 				F95C48781A2CE6C8004760B6 /* AppDelegate.m */,
 				F95C487A1A2CE6C8004760B6 /* Images.xcassets */,
@@ -165,6 +170,7 @@
 				TargetAttributes = {
 					F95C486F1A2CE6C7004760B6 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 2W4U5L3MCF;
 					};
 					F95C48821A2CE6C8004760B6 = {
 						CreatedOnToolsVersion = 6.1;
@@ -218,6 +224,7 @@
 				F95C48791A2CE6C8004760B6 /* AppDelegate.m in Sources */,
 				F95C48761A2CE6C8004760B6 /* main.m in Sources */,
 				F95C48951A2CE786004760B6 /* BLCWebBrowserViewController.m in Sources */,
+				F9B9ECE81A2E1CF60071CAB8 /* BLCAwesomeFloatingToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,9 +340,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BlocBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -343,9 +353,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BlocBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
