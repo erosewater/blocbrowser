@@ -29,6 +29,7 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, assign) NSUInteger frameCount;
+@property (nonatomic, assign) CGFloat zoomScale;
 @end
 
 @implementation BLCWebBrowserViewController
@@ -81,6 +82,9 @@
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+    
+    
+    
    
     
     // Do any additional setup after loading the view.
@@ -104,7 +108,23 @@
     self.webview.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
     
     CGFloat toolBarPlace = browserHeight - 65;
-   self.awesomeToolbar.frame = CGRectMake(20, toolBarPlace, 280, 60);
+    
+  
+        
+    
+        
+    
+        
+    
+    
+    if (!_zoomScale) {
+        
+    
+    self.awesomeToolbar.frame = CGRectMake(20, toolBarPlace, 280, 60);
+    
+    } else {
+        self.awesomeToolbar.frame = CGRectMake(20, toolBarPlace, 280*_zoomScale, 60*_zoomScale);
+    }
     
 }
 
@@ -121,6 +141,50 @@
     } else if ([title isEqual:kBLCWebBrowserRefreshString]) {
         [self.webview reload];
     }
+}
+
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset {
+    CGPoint startingPoint = toolbar.frame.origin;
+   
+        
+    CGPoint newPoint = CGPointMake(startingPoint.x + offset.x, startingPoint.y + offset.y);
+    
+    CGRect potentialNewFrame = CGRectMake(newPoint.x, newPoint.y, CGRectGetWidth(toolbar.frame), CGRectGetHeight(toolbar.frame));
+    
+    
+    
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame)) {
+        toolbar.frame = potentialNewFrame;
+    }
+}
+
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale{
+    
+    
+    _zoomScale = scale;
+    
+    CGPoint newStartPoint = toolbar.frame.origin;
+    
+  
+    
+    toolbar.frame = CGRectMake(newStartPoint.x,newStartPoint.y,toolbar.frame.size.width*scale,toolbar.frame.size.height*scale);
+    
+    
+    
+    
+    
+    //toolbar.transformpo  = CGAffineTransformScale(toolbar.transform, scale, scale);
+    //scale = 1.0;
+    
+   // toolbar.frame = newFrame;
+    //if (CGRectContainsRect(self.view.bounds, newFrame)) {
+   //     toolbar.transform = CGAffineTransformScale(toolbar.transform, toolbar.frame.size.width*scale,toolbar.frame.size.height*scale);
+        
+    
+    
+   // NSLog(@"after frame: %@",self.frame);
+    
+
 }
 
 #pragma mark - UITextFieldDelegate

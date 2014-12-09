@@ -15,6 +15,10 @@
 @optional
 
 -(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title;
+-(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset;
+-(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale;
+-(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToLongPress:(CGPoint)offset;
+
 
 @end
 
@@ -25,6 +29,9 @@
 
 -(void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title;
 
+
 @property (nonatomic, weak) id <BLCAwesomeFloatingToolbarDelegate> delegate;
+
+
 
 @end
