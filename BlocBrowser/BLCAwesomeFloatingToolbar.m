@@ -62,7 +62,9 @@
     return self;
 }
 
-// Question for Steve - is layoutSubviews a standard method?  I can't see where this is being called otherwise
+
+
+// Question for Steve - is layoutSubviews a standard method?  I can't see where this is being called otherwise - answered
         
 - (void) layoutSubviews {
     // set the frames for the 4 labels

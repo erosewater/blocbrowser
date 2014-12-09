@@ -25,6 +25,8 @@
 
 -(void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title;
 
+// Adding property
+
 @property (nonatomic, weak) id <BLCAwesomeFloatingToolbarDelegate> delegate;
 
 @end

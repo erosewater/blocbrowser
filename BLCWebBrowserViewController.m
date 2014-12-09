@@ -134,7 +134,8 @@
    
     
     
-    // Check to see if there are any spaces in the URL;  Check to see if the URL is missing "."'s - Do Google Search
+    // Check to see if there are any spaces in the URL;  Check to see if the URL is missing "."'s - Do Google Search ... Adding this
+    
     NSRange findSpaces = [URLString rangeOfString:@" "];
     NSRange findPeriods = [URLString rangeOfString:@"."];
     
